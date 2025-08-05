@@ -32,8 +32,17 @@ const IntroSplash: React.FC<IntroSplashProps> = ({ onComplete }) => {
     >
       <div className="text-center text-white">
         <div className={`mb-8 transition-all duration-1000 ${logoVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="w-32 h-32 mx-auto mb-6 bg-white rounded-lg flex items-center justify-center shadow-2xl">
-            <span className="text-4xl font-bold text-blue-600">WO</span>
+          <div className="w-32 h-32 mx-auto mb-6 flex items-center justify-center">
+            <img 
+              src="/src/assets/intro_logo.png" 
+              alt="Water Odyssey Intro Logo" 
+              className="w-full h-full object-contain"
+              onError={(e) => {
+                // Fallback to text logo if image fails
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement.innerHTML = '<div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center shadow-2xl"><span class="text-4xl font-bold text-blue-600">WO</span></div>';
+              }}
+            />
           </div>
         </div>
         <div className={`transition-all duration-1000 delay-300 ${textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

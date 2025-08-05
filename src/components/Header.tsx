@@ -39,11 +39,20 @@ const Header: React.FC = () => {
         </div>
         
         <div className="relative z-10 text-center bottom-16">
-          <div className="w-32 h-32 mx-auto mb-4 bg-blue-600 rounded-lg flex items-center justify-center shadow-xl">
-            <span className="text-4xl font-bold text-white">WO</span>
+          <div className="w-32 h-32 mx-auto mb-4 flex items-center justify-center">
+            <img 
+              src="/src/assets/logo11.png" 
+              alt="Water Odyssey Logo" 
+              className="w-full h-full object-contain"
+              onError={(e) => {
+                // Fallback to text logo if image fails
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement.innerHTML = '<div class="w-32 h-32 bg-blue-600 rounded-lg flex items-center justify-center shadow-xl"><span class="text-4xl font-bold text-white">WO</span></div>';
+              }}
+            />
           </div>
           <h2 className="absolute w-full top-16" style={{ color: '#217cac' }}>
-            <span className="relative text-[20px] font-light tracking-normal font-work-sans font-bold left-[110px]">
+            <span className="relative text-[20px] font-light tracking-normal font-work-sans left-[110px]">
               Digital Catalog
             </span>
           </h2>

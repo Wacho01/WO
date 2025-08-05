@@ -232,7 +232,7 @@ export const waterOdysseyConfig: ProductConfig = {
       side: "/textures/rhinoSide.svg"
     },
     downloadLinks: [
-      { label: "Download PDS", url: "/docs/massivesplash_ss_02.pdf", type: "pdf" }
+      { label: "Download PDS", url: "Docu/massivesplash_ss_02.pdf", type: "pdf" }
     ]
   },
 

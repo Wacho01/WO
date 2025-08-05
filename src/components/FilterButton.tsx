@@ -45,11 +45,9 @@ const FilterButton: React.FC<FilterButtonProps> = ({
     >
       <span className="text-center px-1 leading-tight pt-3">{label}</span>
       {isActive && (
-        <img 
-          src="./src/assets/wologo_w.png" 
-          alt="WO Logo" 
-          className="absolute bottom-0 right-1 w-18 h-14 object-cover" 
-        />
+        <div className="absolute bottom-0 right-1 w-18 h-14 bg-white rounded flex items-center justify-center">
+          <span className="text-blue-600 font-bold text-xs">WO</span>
+        </div>
       )}
     </button>
   );

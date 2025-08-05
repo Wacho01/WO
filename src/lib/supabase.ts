@@ -25,7 +25,9 @@ if (supabaseUrl) {
 }
 
 // Create a fallback client or null if credentials are missing
-export const supabase = (supabaseUrl && supabaseAnonKey) ? createClient(supabaseUrl, supabaseAnonKey, {
+export const supabase = (supabaseUrl && supabaseAnonKey && 
+  !supabaseUrl.includes('your-project') && 
+  !supabaseAnonKey.includes('your-anon-key')) ? createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
@@ -39,7 +41,9 @@ export const supabase = (supabaseUrl && supabaseAnonKey) ? createClient(supabase
 
 // Helper function to check if Supabase is configured
 export const isSupabaseConfigured = () => {
-  return !!(supabaseUrl && supabaseAnonKey && supabase);
+  return !!(supabaseUrl && supabaseAnonKey && supabase && 
+    !supabaseUrl.includes('your-project') && 
+    !supabaseAnonKey.includes('your-anon-key'));
 };
 
 // Helper function to get configuration status

@@ -134,7 +134,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ onModelLoad }) => {
       console.log('Loading RHINO.glb model...');
       
       loader.load(
-        './models/gltf/RHINO.glb',
+        '/src/ProductView/models/gltf/RHINO.glb',
         (gltf) => {
           console.log('RHINO.glb loaded successfully');
           
@@ -476,7 +476,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ onModelLoad }) => {
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
-    loader.setPath('./'); // Set base path for ProductView assets
+    // Use full paths instead of base path
 
     // Load the RHINO.glb model
     console.log('Loading RHINO.glb model...');
@@ -536,7 +536,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ onModelLoad }) => {
         loadedModel.add(camera2);
 
         // Initialize particle systems after model is loaded
-        if (particleManagerRef.current) {
+        if (particleManagerRef.current && scene) {
           particleManagerRef.current.initialize(scene, camera);
           console.log('Particle systems initialized after model load');
         }

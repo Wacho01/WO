@@ -398,7 +398,7 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
-    loader.setPath('./'); // Set base path for ProductView assets
+    // Use full paths instead of base path
 
     // Load the model
     loadConfigurableModel(loader)
@@ -447,7 +447,7 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
         loadedModel.add(camera2);
 
         // Initialize particle systems
-        if (config.particles.enabled && particleManagerRef.current) {
+        if (config.particles.enabled && particleManagerRef.current && scene) {
           particleManagerRef.current.initialize(scene, camera, config.particles);
           console.log('Particle systems initialized');
         }

@@ -1,0 +1,252 @@
+/* ProductView styles integrated into main application */
+
+/* Border elements */
+#top, #bottom, #left, #right {
+  background: #2a9cd7;
+  position: fixed;
+  z-index: 85 !important;
+  pointer-events: none;
+}
+
+#left, #right {
+  top: 1%; 
+  bottom: 1%;
+  width: 5px;
+}
+
+#left { 
+  left: 1%; 
+}
+
+#right { 
+  right: 1%; 
+}
+
+#top, #bottom {
+  left: 1%; 
+  right: 1%;
+  height: 5px;
+}
+
+#top { 
+  top: 1%; 
+}
+
+#bottom { 
+  bottom: 1%; 
+}
+
+/* Footer background */
+.footer_background {
+  position: fixed !important;
+  bottom: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 14vh !important;
+  background: #2a9cd7;
+  z-index: 90 !important;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+/* Frame container */
+.frame {
+  position: fixed !important;
+  bottom: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 15vh !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  padding: 0 !important;
+  z-index: 100 !important;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.frame__title {
+  color: #fff !important;
+  position: absolute;
+  font-weight: 600;
+  font-size: clamp(0.8em, 3vw, 1.8em);
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  pointer-events: auto;
+  left: clamp(50px, 8vw, 100px);
+  bottom: clamp(15px, 4vh, 41px);
+  margin: 0;
+}
+
+.frame_vertical {
+  border-left: 2px solid #fff;
+  height: clamp(30px, 6vh, 50px);
+  position: absolute;
+  left: clamp(300px, 25vw, 355px);
+  bottom: clamp(15px, 2.5vh, 40px);
+  margin: 0;
+}
+
+.frame__category { 
+  position: absolute;
+  font-size: clamp(1rem, 2.5vw, 1.5rem) !important;
+  display: inline-block;
+  color: #fff !important;
+  font-family: 'Raleway', sans-serif;
+  pointer-events: auto;
+  left: clamp(320px, 27vw, 375px);
+  bottom: clamp(10px, 5vh, 45px);
+  margin: 0;
+}
+
+.frame__subcategory { 
+  position: absolute;
+  font-size: clamp(1rem, 2.5vw, 1.2rem) !important;
+  display: inline-block;
+  color: #fff !important;
+  font-family: 'Raleway', sans-serif;
+  pointer-events: auto;
+  left: clamp(320px, 27vw, 375px);
+  bottom: clamp(10px, 2vh, 45px);
+  margin: 0;
+}
+
+/* Loading animation */
+.loading {
+  display: inline-block;
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background-color: #00aacc;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 30px 4px rgba(0, 0, 0, 0.5) inset,
+    0 5px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 10004;
+}
+
+.loading:before,
+.loading:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 45%;
+  top: -40%;
+  background-color: #D3D3D3;
+  animation: wave 5s linear infinite;
+}
+
+.loading:before {
+  border-radius: 30%;
+  background: rgba(255, 255, 255, 0.4);
+  animation: wave 5s linear infinite;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(4px);
+  z-index: 10003;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Three.js canvas styles */
+.three-canvas {
+  background-color: #000;
+  color: #fff;
+  font-family: Monospace;
+  font-size: 13px;
+  line-height: 24px;
+  overscroll-behavior: none;
+  pointer-events: auto !important;
+  z-index: 1 !important;
+  position: relative !important;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .footer_background {
+    height: 12vh !important;
+  }
+  
+  .frame {
+    height: 13vh !important;
+  }
+  
+  .frame__title {
+    font-size: 1.8em !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer_background {
+    height: 10vh !important;
+  }
+  
+  .frame {
+    height: 11vh !important;
+  }
+  
+  .frame__title {
+    font-size: 1.6em !important;
+  }
+  
+  .frame_vertical {
+    height: clamp(20px, 4vh, 35px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer_background {
+    height: 8vh !important;
+  }
+  
+  .frame {
+    height: 9vh !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px !important;
+  }
+  
+  .frame__title {
+    position: relative !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    font-size: 1.4em !important;
+    margin-bottom: 5px;
+  }
+  
+  .frame_vertical {
+    display: none;
+  }
+  
+  .frame__category,
+  .frame__subcategory {
+    position: relative !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    font-size: clamp(0.7rem, 3vw, 1rem) !important;
+    margin: 0;
+  }
+}

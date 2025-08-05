@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps {
   title: string;
@@ -19,10 +20,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   productNumber,
   onView
 }) => {
-  // Use ProductView on port 3001
-  const productViewUrl = 'http://localhost:3001';
+  const navigate = useNavigate();
 
   const handleClick = () => {
+    navigate('/product-view');
     if (onView) {
       onView();
     }
@@ -38,11 +39,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
            onMouseLeave={(e) => {
              e.currentTarget.style.borderColor = '#ccc';
            }}>
-        <a 
-          href={productViewUrl}
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="block"
+        <div 
+          className="block cursor-pointer"
           onClick={handleClick}
         >
           <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
@@ -70,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               </p>
             )}
           </div>
-        </a>
+        </div>
       </div>
     </div>
   );

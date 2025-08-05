@@ -2,11 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="./img/logo2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Three.js Water Odyssey Setup</title>
+    <title>Water Odyssey - 3D Product Viewer</title>
+    <style>
+      /* Import legacy CSS for proper styling */
+      @import url('./css/style2.css');
+      @import url('./css/main.css');
+      @import url('./css/components.css');
+      @import url('./css/control-panel.css');
+      @import url('./css/modal.css');
+      @import url('./css/utilities.css');
+      @import url('./css/loading_main.css');
+    </style>
   </head>
   <body>
+    <!-- Border elements from original design -->
+    <div id="left"></div>
+    <div id="right"></div>
+    <div id="top"></div>
+    <div id="bottom"></div>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

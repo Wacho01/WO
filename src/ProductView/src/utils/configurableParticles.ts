@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { getParticleSystem } from './getParticleSystem.js';
-import { getParticleSystem2 } from './getParticleSystem2.js';
+import { getParticleSystem } from './getParticleSystem';
+import { getParticleSystem2 } from './getParticleSystem2';
 
 interface ParticleSystemConfig {
   name: string;

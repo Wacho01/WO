@@ -3,16 +3,23 @@
 @tailwind utilities;
 
 /* Import the original Three.js styles */
-@import url('/style.css');
+@import url('../public/style.css');
 
 /* Import legacy CSS files for compatibility */
 @import url('../css/style2.css');
+@import url('../css/main.css');
+@import url('../css/components.css');
+@import url('../css/control-panel.css');
+@import url('../css/modal.css');
+@import url('../css/utilities.css');
+@import url('../css/loading_main.css');
 
 @layer base {
   body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    font-family: 'Raleway', sans-serif;
   }
 }
 

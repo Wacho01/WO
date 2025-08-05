@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductConfig } from '../config/productConfig';
+import { ProductConfig } from '.../config/productConfig';
 
 interface ConfigurableFooterProps {
   config: ProductConfig;

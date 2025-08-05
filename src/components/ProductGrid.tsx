@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import ProductCard from './ProductCard';
-import { type Product, supabase } from '../lib/supabase';
+import ProductLoadingCard from './ProductLoadingCard';
+import { type Product } from '../lib/supabase';
 import { Search, Filter } from 'lucide-react';
 
 interface ProductGridProps {
@@ -25,8 +26,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, activeFilter, searc
       result = result.filter(product =>
         product.product_name.toLowerCase().includes(searchLower) ||
         (product.subtitle && product.subtitle.toLowerCase().includes(searchLower)) ||
-        (product.category_id && product.category_id.toLowerCase().includes(searchLower)) ||
-        ((product as any).categories?.label && (product as any).categories.label.toLowerCase().includes(searchLower))
+        (product.category_id && product.category_id.toLowerCase().includes(searchLower))
       );
     }
 
@@ -60,17 +60,24 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, activeFilter, searc
 
   const resultsInfo = getResultsText();
 
-  const handleProductView = async (productId: string) => {
-    try {
-      await supabase.rpc('log_product_activity', {
-        product_id: productId,
-        activity_type: 'view',
-        activity_data: { source: 'catalog' }
-      });
-    } catch (error) {
-      console.error('Error logging product view:', error);
-    }
-  };
+  // Show loading state if no products loaded yet
+  if (products.length === 0) {
+    return (
+      <div className="bg-gray-100 py-8">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center space-x-2 mb-2">
+              <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
+              <p className="text-xl font-raleway font-semibold" style={{ color: '#217cac' }}>
+                Loading Products...
+              </p>
+            </div>
+          </div>
+          <ProductLoadingCard count={8} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-100 py-8">
@@ -110,10 +117,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, activeFilter, searc
                   title={product.product_name}
                   subtitle={product.subtitle}
                   image={product.image}
-                  categoryName={(product as any).categories?.label}
                   href={product.href || '#'}
-                  productNumber={(product as any).product_number}
-                  onView={() => handleProductView(product.id)}
+                  productNumber={product.product_number}
                 />
               </div>
             ))}
@@ -161,10 +166,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, activeFilter, searc
                         e.currentTarget.style.backgroundColor = 'transparent';
                         e.currentTarget.style.color = '#217cac';
                       }}
-                      onClick={() => {
-                        // This would trigger a search - you could implement this
-                        console.log(`Search for: ${suggestion}`);
-                      }}
+                      onClick={() => onSearchChange(suggestion)}
                     >
                       {suggestion}
                     </button>

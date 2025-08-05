@@ -39,7 +39,7 @@ const Header: React.FC = () => {
         </div>
         
         <div className="relative z-10 text-center bottom-16">
-          <div className="w-32 h-32 mx-auto mb-4 bg-blue-600 rounded-lg flex items-center justify-center">
+          <div className="w-32 h-32 mx-auto mb-4 bg-blue-600 rounded-lg flex items-center justify-center shadow-xl">
             <span className="text-4xl font-bold text-white">WO</span>
           </div>
           <h2 className="absolute w-full top-16" style={{ color: '#217cac' }}>

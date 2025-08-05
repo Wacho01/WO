@@ -62,9 +62,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 </span>
               </div>
             )}
-            {categoryName && (
+            {subtitle && (
               <p className="text-sm font-raleway text-center mt-2" style={{ color: '#444444' }}>
-                {categoryName}
+                {subtitle}
               </p>
             )}
           </div>

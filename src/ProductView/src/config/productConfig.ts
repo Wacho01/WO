@@ -139,7 +139,7 @@ export const waterOdysseyConfig: ProductConfig = {
   },
 
   model: {
-    path: "/models/gltf/RHINO.glb",
+    path: "models/gltf/RHINO.glb",
     scale: [0.6, 0.6, 0.6],
     position: [0, -0.6, 0],
     rotation: [0, Math.PI + (70 * Math.PI / 180), 0],
@@ -292,7 +292,7 @@ export const fireFeatureConfig: ProductConfig = {
   },
 
   model: {
-    path: "/models/gltf/DRAGON.glb",
+    path: "models/gltf/DRAGON.glb",
     scale: [0.8, 0.8, 0.8],
     position: [0, -0.5, 0],
     rotation: [0, Math.PI, 0],

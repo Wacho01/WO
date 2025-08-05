@@ -139,7 +139,7 @@ export const waterOdysseyConfig: ProductConfig = {
   },
 
   model: {
-    path: "https://stackblitz.com/storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK2dOQVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2e4d4f7c5a8b9c3d1e2f3a4b5c6d7e8f9a0b1c2d/RHINO.glb",
+    path: "RHINO.glb",
     scale: [0.6, 0.6, 0.6],
     position: [0, -0.6, 0],
     rotation: [0, Math.PI + (70 * Math.PI / 180), 0],
@@ -292,7 +292,7 @@ export const fireFeatureConfig: ProductConfig = {
   },
 
   model: {
-    path: "models/gltf/DRAGON.glb",
+    path: "DRAGON.glb",
     scale: [0.8, 0.8, 0.8],
     position: [0, -0.5, 0],
     rotation: [0, Math.PI, 0],

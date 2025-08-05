@@ -398,6 +398,7 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
+    loader.setPath(''); // Clear any base path since we're using full paths
 
     // Load the model
     loadConfigurableModel(loader)

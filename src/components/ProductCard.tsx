@@ -19,8 +19,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   productNumber,
   onView
 }) => {
-  // Use ProductView indexProduct.html for all products
-  const productViewUrl = './src/ProductView/indexProduct.html';
+  // Use ProductView on port 3001
+  const productViewUrl = 'http://localhost:3001';
 
   const handleClick = () => {
     if (onView) {

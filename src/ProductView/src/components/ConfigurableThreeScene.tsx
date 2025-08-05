@@ -124,8 +124,21 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
           console.log('Loading progress:', percentComplete.toFixed(1) + '%');
         },
         (error) => {
-          console.error(`Model loading failed: ${config.model.path}`, error);
-          reject(error);
+          console.warn(`Model file not available for ${config.product.name}. Using fallback geometry.`);
+          
+          // Create a fallback geometry when model loading fails
+          const fallbackGeometry = new THREE.BoxGeometry(2, 1, 1);
+          const fallbackMaterial = new THREE.MeshStandardMaterial({ 
+            color: 0x4a90e2,
+            roughness: 0.3,
+            metalness: 0.1
+          });
+          const fallbackMesh = new THREE.Mesh(fallbackGeometry, fallbackMaterial);
+          fallbackMesh.userData.isModel = true;
+          
+          const fallbackGroup = new THREE.Group();
+          fallbackGroup.add(fallbackMesh);
+          resolve(fallbackGroup);
         }
       );
     });

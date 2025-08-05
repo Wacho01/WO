@@ -370,7 +370,6 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
     dracoLoader.preload();
 
     const loader = new GLTFLoader();
-    loader.setDRACOLoader(dracoLoader);
 
     // Load the model
     loadConfigurableModel(loader)

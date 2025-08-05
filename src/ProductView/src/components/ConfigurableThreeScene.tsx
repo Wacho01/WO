@@ -122,12 +122,13 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
   // Model loading function
   const loadConfigurableModel = async (loader: GLTFLoader): Promise<THREE.Group> => {
     return new Promise<THREE.Group>((resolve, reject) => {
-      console.log(`Loading model: ${config.model.path}`);
+      const modelPath = config.model.path.startsWith('/') ? config.model.path.slice(1) : config.model.path;
+      console.log(`Loading model: ${modelPath}`);
       
       loader.load(
-        config.model.path,
+        modelPath,
         (gltf) => {
-          console.log(`Model loaded successfully: ${config.model.path}`);
+          console.log(`Model loaded successfully: ${modelPath}`);
           const loadedModel = gltf.scene;
           const optimizedModel = optimizeModel(loadedModel);
           resolve(optimizedModel);
@@ -138,20 +139,28 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
           console.log('Loading progress:', percentComplete.toFixed(1) + '%');
         },
         (error) => {
+          console.error(`Failed to load model ${modelPath}:`, error);
           console.warn(`Model file not available for ${config.product.name}. Using fallback geometry.`);
           
           // Create a fallback geometry when model loading fails
-          const fallbackGeometry = new THREE.BoxGeometry(2, 1, 1);
-          const fallbackMaterial = new THREE.MeshStandardMaterial({ 
-            color: 0x4a90e2,
+          const fallbackGeometry = new THREE.BoxGeometry(1, 1.5, 0.8);
+          const fallbackMaterial = new THREE.MeshPhongMaterial({ 
+            color: 0x0023FF,
             roughness: 0.3,
-            metalness: 0.1
+            shininess: 30
           });
           const fallbackMesh = new THREE.Mesh(fallbackGeometry, fallbackMaterial);
+          fallbackMesh.name = 'bucket1';
+          fallbackMesh.nameID = 'bucket1';
           fallbackMesh.userData.isModel = true;
+          fallbackMesh.castShadow = true;
+          fallbackMesh.receiveShadow = true;
           
           const fallbackGroup = new THREE.Group();
           fallbackGroup.add(fallbackMesh);
+          fallbackGroup.scale.set(...config.model.scale);
+          fallbackGroup.position.set(...config.model.position);
+          fallbackGroup.rotation.set(...config.model.rotation);
           resolve(fallbackGroup);
         }
       );
@@ -398,8 +407,8 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
-    // Always load models from the main public directory
-    loader.setPath('/');
+    // Set base path to public directory for model loading
+    loader.setPath('./');
 
     // Load the model
     loadConfigurableModel(loader)

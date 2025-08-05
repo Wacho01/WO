@@ -49,7 +49,6 @@ const ConfigurableFooter: React.FC<ConfigurableFooterProps> = ({ config }) => {
           bottom: 'clamp(15px, 4vh, 41px)',
           margin: 0
         }}>{config.product.name}</span>
-        
         <span className="frame_vertical" style={{
           borderLeft: '2px solid #fff',
           height: 'clamp(30px, 6vh, 50px)',
@@ -58,7 +57,6 @@ const ConfigurableFooter: React.FC<ConfigurableFooterProps> = ({ config }) => {
           bottom: 'clamp(15px, 2.5vh, 40px)',
           margin: 0
         }}></span>
-        
         <span className="frame__category" style={{
           position: 'absolute',
           fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
@@ -70,7 +68,6 @@ const ConfigurableFooter: React.FC<ConfigurableFooterProps> = ({ config }) => {
           bottom: 'clamp(10px, 5vh, 45px)',
           margin: 0
         }}>{config.product.category}</span>
-        
         <span className="frame__subcategory" style={{
           position: 'absolute',
           fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',

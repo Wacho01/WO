@@ -19,7 +19,16 @@ export const useCategories = () => {
 
       // Check if Supabase is configured
       if (!isSupabaseConfigured()) {
-        throw new Error('Supabase is not configured. Please set up your environment variables.');
+        console.warn('Supabase not configured, using demo data');
+        // Return demo categories instead of throwing error
+        setCategories([
+          { id: 'all', label: 'All', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: 'funforms', label: 'Fun Forms', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: 'colorcast', label: 'Color Cast', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: 'themed', label: 'Themed Essentials', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
+        ]);
+        setLoading(false);
+        return;
       }
 
       console.log('Fetching categories...');

@@ -5,17 +5,13 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 // Debug logging to help identify configuration issues
 console.log('Supabase Configuration Debug:');
-console.log('URL:', supabaseUrl);
+console.log('URL:', supabaseUrl ? 'Set' : 'Missing');
 console.log('Anon Key exists:', !!supabaseAnonKey);
 console.log('Current origin:', window.location.origin);
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase environment variables');
-  console.error('VITE_SUPABASE_URL:', supabaseUrl);
-  console.error('VITE_SUPABASE_ANON_KEY exists:', !!supabaseAnonKey);
-  console.error('Please check your .env file and ensure it contains:');
-  console.error('VITE_SUPABASE_URL=your-supabase-project-url');
-  console.error('VITE_SUPABASE_ANON_KEY=your-supabase-anon-key');
+  console.warn('Missing Supabase environment variables - using demo mode');
+  console.warn('To connect to Supabase, add your credentials to .env file');
 }
 
 // Validate URL format

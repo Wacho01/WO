@@ -20,13 +20,13 @@ function App() {
     logo.style.width = "100%";
     logo.style.opacity = "0.7";
     logo.style.transition = "all .35s ease-in-out";
-    logo.src = 'img/logo2.png';
+    logo.src = './img/logo2.png';
   };
 
   const mouseaway = (logo: HTMLImageElement) => {
     logo.style.width = "100%";
     logo.style.opacity = "1.0";
-    logo.src = "img/logo2.png";
+    logo.src = "./img/logo2.png";
   };
 
   // Show loading if configuration is loading
@@ -49,6 +49,7 @@ function App() {
       </div>
     );
   }
+
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gray-100">
       {/* Border Lines from original file - positioned in front of canvas */}

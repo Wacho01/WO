@@ -19,9 +19,9 @@ export const useProducts = () => {
 
       // Check if Supabase is configured
       if (!isSupabaseConfigured()) {
-        console.warn('Supabase not configured, using demo data');
+        console.log('Supabase not configured, using demo data');
         // Return demo data instead of throwing error
-        setProducts([
+        const demoProducts = [
           {
             id: 'demo-1',
             product_name: 'MOUNTAIN LIONS',
@@ -127,7 +127,8 @@ export const useProducts = () => {
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString()
           }
-        ]);
+        ];
+        setProducts(demoProducts);
         setLoading(false);
         return;
       }
@@ -161,8 +162,8 @@ export const useProducts = () => {
     } catch (err) {
       console.error('Error fetching products:', err);
       // Don't set error for connection issues, just use demo data
-      console.warn('Using demo data due to connection issue');
-      setProducts([
+      console.log('Using demo products due to connection issue');
+      const demoProducts = [
         {
           id: 'demo-1',
           product_name: 'MOUNTAIN LIONS',
@@ -268,7 +269,8 @@ export const useProducts = () => {
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         }
-      ]);
+      ];
+      setProducts(demoProducts);
     } finally {
       setLoading(false);
     }

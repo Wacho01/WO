@@ -26,7 +26,7 @@ const Header: React.FC = () => {
         <WaveShape className="bottom-0" fill="#2a9cd7" />
         <div className="relative z-10 text-center bottom-16">
           <img 
-            src="/src/assets/logo11.png" 
+            src="./src/assets/logo11.png" 
             alt="Water Odyssey Logo" 
             className="mx-auto mb-2 h-[110px] w-auto"
           />

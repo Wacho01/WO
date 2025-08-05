@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import IntroSplash from './components/IntroSplash';
@@ -68,10 +68,15 @@ function MainCatalog() {
     refetchCategories();
   };
 
-  // Show loading state only during intro, not for data loading
-  const isLoading = showIntro;
-  
-  // Show error only if both products and categories fail to load
+  // Force intro to complete after 3 seconds regardless
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show error only if both products and categories fail to load AND intro is complete
   const hasError = !showIntro && productsError && categoriesError;
   const errorMessage = productsError || categoriesError || '';
 
@@ -79,41 +84,34 @@ function MainCatalog() {
     <div className="min-h-screen bg-gray-100">
       {showIntro && <IntroSplash onComplete={handleIntroComplete} />}
       
-      <div className={`transition-opacity duration-1000 ${showIntro ? 'opacity-0' : 'opacity-100'}`}>
-        <Header />
-        
-        {hasError ? (
-          <ErrorMessage 
-            message={errorMessage} 
-            onRetry={handleRetry}
-            className="mt-8"
-          />
-        ) : (productsLoading || categoriesLoading) ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <LoadingSpinner size="lg" className="mb-4" />
-              <p className="text-lg font-raleway" style={{ color: '#217cac' }}>
-                Loading aquatic play equipment...
-              </p>
-            </div>
-          </div>
-        ) : (
-          <>
-            <FilterSection 
-              activeFilter={activeFilter} 
-              onFilterChange={handleFilterChange}
-              searchTerm={searchTerm}
-              onSearchChange={handleSearchChange}
-              categories={categories}
+      {!showIntro && (
+        <div className="w-full">
+          <Header />
+          
+          {hasError ? (
+            <ErrorMessage 
+              message={errorMessage} 
+              onRetry={handleRetry}
+              className="mt-8"
             />
-            <ProductGrid 
-              products={products} 
-              activeFilter={activeFilter}
-              searchTerm={searchTerm}
-            />
-          </>
-        )}
-      </div>
+          ) : (
+            <>
+              <FilterSection 
+                activeFilter={activeFilter} 
+                onFilterChange={handleFilterChange}
+                searchTerm={searchTerm}
+                onSearchChange={handleSearchChange}
+                categories={categories}
+              />
+              <ProductGrid 
+                products={products} 
+                activeFilter={activeFilter}
+                searchTerm={searchTerm}
+              />
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -19,14 +19,15 @@ export const useCategories = () => {
 
       // Check if Supabase is configured
       if (!isSupabaseConfigured()) {
-        console.warn('Supabase not configured, using demo data');
+        console.log('Supabase not configured, using demo data');
         // Return demo categories instead of throwing error
-        setCategories([
+        const demoCategories = [
           { id: 'all', label: 'All', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
           { id: 'funforms', label: 'Fun Forms', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
           { id: 'colorcast', label: 'Color Cast', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
           { id: 'themed', label: 'Themed Essentials', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
-        ]);
+        ];
+        setCategories(demoCategories);
         setLoading(false);
         return;
       }
@@ -55,13 +56,14 @@ export const useCategories = () => {
     } catch (err) {
       console.error('Error fetching categories:', err);
       // Don't set error for connection issues, just use demo data
-      console.warn('Using demo categories due to connection issue');
-      setCategories([
+      console.log('Using demo categories due to connection issue');
+      const demoCategories = [
         { id: 'all', label: 'All', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
         { id: 'funforms', label: 'Fun Forms', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
         { id: 'colorcast', label: 'Color Cast', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
         { id: 'themed', label: 'Themed Essentials', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
-      ]);
+      ];
+      setCategories(demoCategories);
     } finally {
       setLoading(false);
     }

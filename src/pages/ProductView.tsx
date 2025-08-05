@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import ConfigurableThreeScene from '../components/productview/ConfigurableThreeScene';
-import ConfigurableControlPanel from '../components/productview/ConfigurableControlPanel';
-import ConfigurableFooter from '../components/productview/ConfigurableFooter';
-import LoadingSpinner from '../components/productview/LoadingSpinner';
-import { useProductConfig } from '../hooks/productview/useProductConfig';
-import { useThreeScene } from '../hooks/productview/useThreeScene';
+import ConfigurableThreeScene from '../ProductView/src/components/ConfigurableThreeScene';
+import ConfigurableControlPanel from '../ProductView/src/components/ConfigurableControlPanel';
+import ConfigurableFooter from '../ProductView/src/components/ConfigurableFooter';
+import LoadingSpinner from '../ProductView/src/components/LoadingSpinner';
+import { useProductConfig } from '../ProductView/src/hooks/useProductConfig';
+import { useThreeScene } from '../ProductView/src/hooks/useThreeScene';
 
 const ProductView: React.FC = () => {
   const navigate = useNavigate();

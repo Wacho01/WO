@@ -10,10 +10,10 @@ const IntroSplash: React.FC<IntroSplashProps> = ({ onComplete }) => {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setLogoVisible(true), 500);
-    const timer2 = setTimeout(() => setTextVisible(true), 1200);
-    const timer3 = setTimeout(() => setFadeOut(true), 3000);
-    const timer4 = setTimeout(() => onComplete(), 4000);
+    const timer1 = setTimeout(() => setLogoVisible(true), 300);
+    const timer2 = setTimeout(() => setTextVisible(true), 800);
+    const timer3 = setTimeout(() => setFadeOut(true), 2000);
+    const timer4 = setTimeout(() => onComplete(), 2500);
 
     return () => {
       clearTimeout(timer1);

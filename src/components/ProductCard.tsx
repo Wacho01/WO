@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   onView
 }) => {
   // Use ProductView indexProduct.html for all products
-  const productViewUrl = '/src/ProductView/indexProduct.html';
+  const productViewUrl = './src/ProductView/indexProduct.html';
 
   const handleClick = () => {
     if (onView) {

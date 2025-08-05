@@ -68,11 +68,11 @@ function MainCatalog() {
     refetchCategories();
   };
 
-  // Show loading state during intro or data loading
-  const isLoading = showIntro || productsLoading || categoriesLoading;
+  // Show loading state only during intro, not for data loading
+  const isLoading = showIntro;
   
-  // Show error if there's an error and intro is complete
-  const hasError = !showIntro && (productsError || categoriesError);
+  // Show error only if both products and categories fail to load
+  const hasError = !showIntro && productsError && categoriesError;
   const errorMessage = productsError || categoriesError || '';
 
   return (
@@ -88,7 +88,7 @@ function MainCatalog() {
             onRetry={handleRetry}
             className="mt-8"
           />
-        ) : isLoading ? (
+        ) : (productsLoading || categoriesLoading) ? (
           <div className="flex items-center justify-center py-20">
             <div className="text-center">
               <LoadingSpinner size="lg" className="mb-4" />

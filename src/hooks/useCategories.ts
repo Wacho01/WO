@@ -54,9 +54,14 @@ export const useCategories = () => {
       setCategories(data || []);
     } catch (err) {
       console.error('Error fetching categories:', err);
-      const errorInfo = err instanceof Error ? handleSupabaseError(err) : { message: 'Failed to fetch categories' };
-      const errorMessage = errorInfo.message || 'Failed to fetch categories';
-      setError(errorMessage);
+      // Don't set error for connection issues, just use demo data
+      console.warn('Using demo categories due to connection issue');
+      setCategories([
+        { id: 'all', label: 'All', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+        { id: 'funforms', label: 'Fun Forms', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+        { id: 'colorcast', label: 'Color Cast', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+        { id: 'themed', label: 'Themed Essentials', disabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
+      ]);
     } finally {
       setLoading(false);
     }

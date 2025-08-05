@@ -45,8 +45,31 @@ const FilterButton: React.FC<FilterButtonProps> = ({
     >
       <span className="text-center px-1 leading-tight pt-3">{label}</span>
       {isActive && (
-        <div className="absolute bottom-0 right-1 w-18 h-14 bg-white rounded flex items-center justify-center">
-          <span className="text-blue-600 font-bold text-xs">WO</span>
+        <div className="absolute bottom-0 right-1 w-18 h-14 flex items-center justify-center">
+          <img 
+            src="/src/assets/wologo_w.png" 
+            alt="WO Logo" 
+            className="w-full h-full object-contain"
+            onError={(e) => {
+              console.error('Failed to load wologo_w.png from /src/assets/wologo_w.png');
+              // Try alternative paths
+              const alternatives = [
+                '/public/img/wologo_w.png',
+                '/img/wologo_w.png',
+                '/assets/wologo_w.png'
+              ];
+              const img = e.currentTarget;
+              const currentSrc = img.src;
+              const nextAlt = alternatives.find(alt => !currentSrc.includes(alt));
+              if (nextAlt) {
+                console.log(`Trying alternative path: ${nextAlt}`);
+                img.src = nextAlt;
+              } else {
+                console.log('All alternative paths failed, hiding image');
+                img.style.display = 'none';
+              }
+            }}
+          />
         </div>
       )}
     </button>

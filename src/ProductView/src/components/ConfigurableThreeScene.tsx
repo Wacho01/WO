@@ -122,7 +122,7 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
   // Model loading function
   const loadConfigurableModel = async (loader: GLTFLoader): Promise<THREE.Group> => {
     return new Promise<THREE.Group>((resolve, reject) => {
-      const modelPath = config.model.path.startsWith('/') ? config.model.path.slice(1) : config.model.path;
+      const modelPath = config.model.path;
       console.log(`Loading model: ${modelPath}`);
       
       loader.load(
@@ -407,8 +407,8 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
-    // Set base path to public directory for model loading
-    loader.setPath('./');
+    // Load models from the ProductView models directory
+    loader.setPath('/');
 
     // Load the model
     loadConfigurableModel(loader)

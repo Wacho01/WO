@@ -19,7 +19,7 @@ export default defineConfig({
     open: '/indexProduct.html'
   },
   optimizeDeps: {
-    include: ['three', '@types/three'],
+    include: ['three'],
     esbuildOptions: {
       target: 'esnext'
     }

@@ -134,7 +134,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ onModelLoad }) => {
       console.log('Loading RHINO.glb model...');
       
       loader.load(
-        'RHINO.glb',
+        'models/gltf/RHINO.glb',
         (gltf) => {
           console.log('RHINO.glb loaded successfully');
           
@@ -476,7 +476,8 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ onModelLoad }) => {
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
-    loader.setPath('/models/gltf/');
+    // Always load models from the main public directory
+    loader.setPath('/');
 
     // Load the RHINO.glb model
     console.log('Loading RHINO.glb model...');

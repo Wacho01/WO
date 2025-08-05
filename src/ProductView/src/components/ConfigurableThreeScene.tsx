@@ -398,6 +398,8 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
+    // Always load models from the main public directory
+    loader.setPath('/');
 
     // Load the model
     loadConfigurableModel(loader)

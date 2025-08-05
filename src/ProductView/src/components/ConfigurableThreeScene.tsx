@@ -41,20 +41,6 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
   // Initialize rotation counter
   let initRotate = 0;
 
-  // Logo hover functions (converted from the original logo.js)
-  const rollover = (logo: HTMLImageElement) => {
-    logo.style.width = "100%";
-    logo.style.opacity = "0.7";
-    logo.style.transition = "all .35s ease-in-out";
-    logo.src = '/src/ProductView/img/logo2.png';
-  };
-
-  const mouseaway = (logo: HTMLImageElement) => {
-    logo.style.width = "100%";
-    logo.style.opacity = "1.0";
-    logo.src = "/src/ProductView/img/logo2.png";
-  };
-
   // Function to apply material to both models
   const setMaterialBothModels = (partName: string, material: THREE.Material) => {
     const updateModel = (model: THREE.Group) => {
@@ -122,13 +108,12 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
   // Model loading function
   const loadConfigurableModel = async (loader: GLTFLoader): Promise<THREE.Group> => {
     return new Promise<THREE.Group>((resolve, reject) => {
-      const modelPath = config.model.path;
-      console.log(`Loading model: ${modelPath}`);
+      console.log(`Loading model: ${config.model.path}`);
       
       loader.load(
-        modelPath,
+        config.model.path,
         (gltf) => {
-          console.log(`Model loaded successfully: ${modelPath}`);
+          console.log(`Model loaded successfully: ${config.model.path}`);
           const loadedModel = gltf.scene;
           const optimizedModel = optimizeModel(loadedModel);
           resolve(optimizedModel);
@@ -139,29 +124,8 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
           console.log('Loading progress:', percentComplete.toFixed(1) + '%');
         },
         (error) => {
-          console.error(`Failed to load model ${modelPath}:`, error);
-          console.warn(`Model file not available for ${config.product.name}. Using fallback geometry.`);
-          
-          // Create a fallback geometry when model loading fails
-          const fallbackGeometry = new THREE.BoxGeometry(1, 1.5, 0.8);
-          const fallbackMaterial = new THREE.MeshPhongMaterial({ 
-            color: 0x0023FF,
-            roughness: 0.3,
-            shininess: 30
-          });
-          const fallbackMesh = new THREE.Mesh(fallbackGeometry, fallbackMaterial);
-          fallbackMesh.name = 'bucket1';
-          fallbackMesh.nameID = 'bucket1';
-          fallbackMesh.userData.isModel = true;
-          fallbackMesh.castShadow = true;
-          fallbackMesh.receiveShadow = true;
-          
-          const fallbackGroup = new THREE.Group();
-          fallbackGroup.add(fallbackMesh);
-          fallbackGroup.scale.set(...config.model.scale);
-          fallbackGroup.position.set(...config.model.position);
-          fallbackGroup.rotation.set(...config.model.rotation);
-          resolve(fallbackGroup);
+          console.error(`Model loading failed: ${config.model.path}`, error);
+          reject(error);
         }
       );
     });
@@ -407,8 +371,6 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
-    // Load models from the ProductView models directory
-    loader.setPath('/');
 
     // Load the model
     loadConfigurableModel(loader)

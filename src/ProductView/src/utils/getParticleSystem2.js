@@ -69,7 +69,7 @@ function getParticleSystem2(params) {
   const { camera, emitter, parent, rate, texture } = params;
   const uniforms = {
     diffuseTexture: { 
-      value: new THREE.TextureLoader().load(texture.startsWith('/') ? texture : `/src/ProductView/public/${texture}`)
+      value: new THREE.TextureLoader().load(texture)
     },
     pointMultiplier: {
       value: window.innerHeight / (2.0 * Math.tan(30.0 * Math.PI / 180.0))

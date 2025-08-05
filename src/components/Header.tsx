@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Settings } from 'lucide-react';
+import WaveShape from './WaveShape';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -22,39 +23,15 @@ const Header: React.FC = () => {
       </button>
 
       <div className="relative bg-white pt-16 pb-8">
-        {/* Wave Shape */}
-        <div className="absolute bottom-0 w-full">
-          <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            className="relative block w-full h-[500px] bottom-0"
-          >
-            <path
-              d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"
-              fill="#2a9cd7"
-            />
-          </svg>
-        </div>
-        
+        <WaveShape className="bottom-0" fill="#2a9cd7" />
         <div className="relative z-10 text-center bottom-16">
-          <div className="w-32 h-32 mx-auto mb-4 flex items-center justify-center">
-            <img 
-              src="/logo11.png" 
-              alt="Water Odyssey Logo" 
-              className="w-full h-full object-contain"
-              onError={(e) => {
-                // Fallback to text logo if image fails
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement.innerHTML = '<div class="w-32 h-32 bg-blue-600 rounded-lg flex items-center justify-center shadow-xl"><span class="text-4xl font-bold text-white">WO</span></div>';
-              }}
-            />
-          </div>
+          <img 
+            src="/src/assets/logo11.png" 
+            alt="Water Odyssey Logo" 
+            className="mx-auto mb-2 h-[110px] w-auto"
+          />
           <h2 className="absolute w-full top-16" style={{ color: '#217cac' }}>
-            <span className="relative text-[20px] font-light tracking-normal font-work-sans left-[110px]">
-              Digital Catalog
-            </span>
+            <a className="relative text-[20px] font-ligth tracking-normal font-work-sans font-bold left-[110px]">Digital Catalog</a>
           </h2>
         </div>
       </div>

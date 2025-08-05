@@ -15,10 +15,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
   subtitle, 
   image, 
   categoryName,
-  href = '#',
+  href,
   productNumber,
   onView
 }) => {
+  // Use ProductView index.html for all products
+  const productViewUrl = '/src/ProductView/index.html';
+
   const handleClick = () => {
     if (onView) {
       onView();
@@ -36,7 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
              e.currentTarget.style.borderColor = '#ccc';
            }}>
         <a 
-          href={href} 
+          href={productViewUrl}
           target="_blank" 
           rel="noopener noreferrer" 
           className="block"

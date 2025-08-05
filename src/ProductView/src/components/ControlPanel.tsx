@@ -118,7 +118,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       name: 'ROCK1', 
       value: 'ROCK1_texture',
       type: 'texture',
-      texture: '/src/ProductView/public/textures/rhinotexture3.jpg',
+      texture: '/textures/rhinotexture3.jpg',
       shininess: 20,
       uvwMapping: true
       // name: 'Rock Natural', 
@@ -142,7 +142,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       name: 'ROCK2', 
       value: 'ROCK2_texture',
       type: 'texture',
-      texture: '/src/ProductView/public/textures/rhinotexture4.jpg',
+      texture: '/textures/rhinotexture4.jpg',
       shininess: 20,
       uvwMapping: true
     },
@@ -171,7 +171,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       name: 'GRASS1', 
       value: 'GRASS1_texture',
       type: 'texture',
-      texture: '/src/ProductView/public/textures/RHINO_GRASS5.jpg',
+      texture: '/textures/RHINO_GRASS5.jpg',
       shininess: 15,
       uvwMapping: true
     },
@@ -179,7 +179,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       name: 'GRASS2', 
       value: 'GRASS2_texture',
       type: 'texture',
-      texture: '/src/ProductView/public/textures/RHINO_GRASS6.jpg',
+      texture: '/textures/RHINO_GRASS6.jpg',
       shininess: 15,
       uvwMapping: true
     },
@@ -189,14 +189,14 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       name: 'COLOR2', 
       value: 'color2_texture',
       type: 'texture',
-      texture: '/src/ProductView/public/textures/COLOR2.jpg',
+      texture: '/textures/COLOR2.jpg',
       shininess: 60
     },
     { 
       name: 'COLOR3', 
       value: 'color3_texture',
       type: 'texture',
-      texture: '/src/ProductView/public/textures/COLOR3.jpg',
+      texture: '/textures/COLOR3.jpg',
       shininess: 60
     },
     

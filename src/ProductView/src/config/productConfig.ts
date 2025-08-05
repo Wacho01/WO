@@ -139,7 +139,7 @@ export const waterOdysseyConfig: ProductConfig = {
   },
 
   model: {
-    path: "/src/ProductView/models/gltf/RHINO.glb",
+    path: "/models/gltf/RHINO.glb",
     scale: [0.6, 0.6, 0.6],
     position: [0, -0.6, 0],
     rotation: [0, Math.PI + (70 * Math.PI / 180), 0],
@@ -158,7 +158,7 @@ export const waterOdysseyConfig: ProductConfig = {
         type: "spray",
         position: [-0.1, 0.47, 0.19],
         rate: 500.0,
-        texture: "/src/ProductView/public/img/light_01.png",
+        texture: "/img/light_01.png",
         maxLife: 2.5,
         velocity: [-0.4, 0, 1]
       },
@@ -167,7 +167,7 @@ export const waterOdysseyConfig: ProductConfig = {
         type: "spray",
         position: [-0.5, 0.47, 0],
         rate: 500.0,
-        texture: "/src/ProductView/public/img/light_01.png",
+        texture: "/img/light_01.png",
         maxLife: 2.5,
         velocity: [-0.4, 0, 1]
       },
@@ -176,7 +176,7 @@ export const waterOdysseyConfig: ProductConfig = {
         type: "spray",
         position: [0.3, 0.46, 0.265],
         rate: 500.0,
-        texture: "/src/ProductView/public/img/light_01.png",
+        texture: "/img/light_01.png",
         maxLife: 2.5,
         velocity: [-0.4, 0, 1]
       },
@@ -185,7 +185,7 @@ export const waterOdysseyConfig: ProductConfig = {
         type: "mist",
         position: [0.09, 0.46, -0.46],
         rate: 2500.0,
-        texture: "/src/ProductView/public/img/light_01.png",
+        texture: "/img/light_01.png",
         maxLife: 3.0,
         velocity: [0, 0.2, -0.8],
         spread: 0.4
@@ -203,12 +203,12 @@ export const waterOdysseyConfig: ProductConfig = {
       { name: "Coral", value: "#D60000", type: "color" },
       { name: "Sky", value: "#00E4F3", type: "color" },
       { name: "Green", value: "#19BA1B", type: "color" },
-      { name: "COLOR2", value: "color2_texture", type: "texture", texture: "/src/ProductView/public/textures/COLOR2.jpg", shininess: 60 },
-      { name: "COLOR3", value: "color3_texture", type: "texture", texture: "/src/ProductView/public/textures/COLOR3.jpg", shininess: 60 },
-      { name: "ROCK1", value: "ROCK1_texture", type: "texture", texture: "/src/ProductView/public/textures/rhinotexture3.jpg", shininess: 20, uvwMapping: true },
-      { name: "ROCK2", value: "ROCK2_texture", type: "texture", texture: "/src/ProductView/public/textures/rhinotexture4.jpg", shininess: 20, uvwMapping: true },
-      { name: "GRASS1", value: "GRASS1_texture", type: "texture", texture: "/src/ProductView/public/textures/RHINO_GRASS5.jpg", shininess: 15, uvwMapping: true },
-      { name: "GRASS2", value: "GRASS2_texture", type: "texture", texture: "/src/ProductView/public/textures/RHINO_GRASS6.jpg", shininess: 15, uvwMapping: true }
+      { name: "COLOR2", value: "color2_texture", type: "texture", texture: "/textures/COLOR2.jpg", shininess: 60 },
+      { name: "COLOR3", value: "color3_texture", type: "texture", texture: "/textures/COLOR3.jpg", shininess: 60 },
+      { name: "ROCK1", value: "ROCK1_texture", type: "texture", texture: "/textures/rhinotexture3.jpg", shininess: 20, uvwMapping: true },
+      { name: "ROCK2", value: "ROCK2_texture", type: "texture", texture: "/textures/rhinotexture4.jpg", shininess: 20, uvwMapping: true },
+      { name: "GRASS1", value: "GRASS1_texture", type: "texture", texture: "/textures/RHINO_GRASS5.jpg", shininess: 15, uvwMapping: true },
+      { name: "GRASS2", value: "GRASS2_texture", type: "texture", texture: "/textures/RHINO_GRASS6.jpg", shininess: 15, uvwMapping: true }
     ]
   },
 
@@ -227,12 +227,12 @@ export const waterOdysseyConfig: ProductConfig = {
 
   resources: {
     dimensionViews: {
-      front: "/src/ProductView/public/textures/rhinoFront.svg",
-      top: "/src/ProductView/public/textures/rhinoTop.svg",
-      side: "/src/ProductView/public/textures/rhinoSide.svg"
+      front: "/textures/rhinoFront.svg",
+      top: "/textures/rhinoTop.svg",
+      side: "/textures/rhinoSide.svg"
     },
     downloadLinks: [
-      { label: "Download PDS", url: "/src/ProductView/public/docs/massivesplash_ss_02.pdf", type: "pdf" }
+      { label: "Download PDS", url: "Docu/massivesplash_ss_02.pdf", type: "pdf" }
     ]
   },
 

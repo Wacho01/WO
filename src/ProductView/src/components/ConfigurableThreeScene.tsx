@@ -751,11 +751,6 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
       
       {isLoading && (
         <>
-          <div className="loading-overlay"></div>
-          <div className="loading" id="js-loader"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-16 text-gray-800 text-lg font-medium z-[10005]">
-            Loading {config.product.name}...
-          </div>
         </>
       )}
       

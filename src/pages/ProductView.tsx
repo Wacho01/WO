@@ -84,7 +84,7 @@ const ProductView: React.FC = () => {
       <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
         <div className="logo">
           <img 
-            src="/src/ProductView/img/logo2.png" 
+            src="/src/ProductView/img/logo2.png"
             alt="Water Odyssey Logo" 
             className="h-16 w-auto object-contain transition-all duration-300 select-none"
             style={{
@@ -104,7 +104,7 @@ const ProductView: React.FC = () => {
             onLoad={() => console.log('Logo loaded successfully')}
             onError={(e) => {
               console.log('Logo failed to load, trying fallback');
-              e.currentTarget.src = '/src/assets/logo11.png';
+              e.currentTarget.src = '/logo11.png';
             }}
             draggable={false}
           />

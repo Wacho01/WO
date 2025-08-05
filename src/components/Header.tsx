@@ -41,7 +41,7 @@ const Header: React.FC = () => {
         <div className="relative z-10 text-center bottom-16">
           <div className="w-32 h-32 mx-auto mb-4 flex items-center justify-center">
             <img 
-              src="/src/assets/logo11.png" 
+              src="/logo11.png" 
               alt="Water Odyssey Logo" 
               className="w-full h-full object-contain"
               onError={(e) => {

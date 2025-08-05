@@ -41,6 +41,20 @@ const ConfigurableThreeScene: React.FC<ConfigurableThreeSceneProps> = ({
   // Initialize rotation counter
   let initRotate = 0;
 
+  // Logo hover functions (converted from the original logo.js)
+  const rollover = (logo: HTMLImageElement) => {
+    logo.style.width = "100%";
+    logo.style.opacity = "0.7";
+    logo.style.transition = "all .35s ease-in-out";
+    logo.src = '/src/ProductView/img/logo2.png';
+  };
+
+  const mouseaway = (logo: HTMLImageElement) => {
+    logo.style.width = "100%";
+    logo.style.opacity = "1.0";
+    logo.src = "/src/ProductView/img/logo2.png";
+  };
+
   // Function to apply material to both models
   const setMaterialBothModels = (partName: string, material: THREE.Material) => {
     const updateModel = (model: THREE.Group) => {

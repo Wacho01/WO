@@ -164,7 +164,7 @@ const ConfigurableControlPanel: React.FC<ConfigurableControlPanelProps> = ({
               {config.resources.downloadLinks.map((link, index) => (
                 <button 
                   key={index}
-                  onClick={() => handleDownloadResource(link.url)}
+                  onClick={() => window.open(link.url, '_blank')}
                   className="w-full bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded flex items-center justify-center transition-colors text-sm font-medium uppercase"
                 >
                   <Download className="mr-2" size={16} />

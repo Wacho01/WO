@@ -34,7 +34,7 @@ const IntroSplash: React.FC<IntroSplashProps> = ({ onComplete }) => {
         <div className={`mb-8 transition-all duration-1000 ${logoVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="w-32 h-32 mx-auto mb-6 flex items-center justify-center">
             <img 
-              src="/src/assets/intro_logo.png" 
+              src="/intro_logo.png" 
               alt="Water Odyssey Intro Logo" 
               className="w-full h-full object-contain"
               onError={(e) => {
